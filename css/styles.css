@@ -1,0 +1,54 @@
+:root {
+    --color-primary:#0B5D3B;
+    --color-secondary:#DCEBDF;
+    --color-accent:#E0A526;
+    --color-background:#FAF8F3;
+    --color-text:#1F2A24;
+}
+
+html {
+    color: var(--color-text);
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-background);
+}
+
+main {
+    flex: 1;
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
+    border-bottom: 0.2rem solid var(--color-accent);
+    padding: 1rem 4rem !important;
+}
+
+.nav-logo {
+    flex: 1;
+}
+
+.nav-main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex: 2;
+}
+
+.nav-extra {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.main-container {
+    padding: 1rem 4rem;
+}
