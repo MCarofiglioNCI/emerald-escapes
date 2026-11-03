@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/styles.css">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
 	<script src="js/experiences.js" defer></script>
 	<script src="js/bootstrap.min.js" defer></script>
 	<script src="js/main.js" defer></script>
@@ -12,7 +12,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar">
+        <nav class="site-nav">
             <div class="nav-logo">
                 LOGO
             </div>
@@ -30,9 +30,25 @@
     <main>
         <div class="main-container">
             <div id="filter-section">
-                FILTERS
+                <label for="filter-category">Category</label>
+                <select id="filter-category"></select>
+
+                <label for="filter-location">Location</label>
+                <select id="filter-location"></select>
+
+                <label for="filter-price">Max price: <span id="price-value"></span></label>
+                <input type="range" id="filter-price" step="5">
+
+                <label for="sort-by">Sort by</label>
+                <select id="sort-by">
+                    <option value="default">Recommended</option>
+                    <option value="price-asc">Price: low to high</option>
+                    <option value="price-desc">Price: high to low</option>
+                    <option value="duration-asc">Duration: shortest first</option>
+                </select>
             </div>
-            <div id="card-section" class="row g-4">
+            <p id="no-results" hidden>No experiences match your filters.</p>
+            <div id="card-section">
 
             </div>
         </div>

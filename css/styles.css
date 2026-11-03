@@ -22,14 +22,14 @@ main {
     flex: 1;
 }
 
-.navbar {
+.site-nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: var(--color-primary);
     color: var(--color-secondary);
     border-bottom: 0.2rem solid var(--color-accent);
-    padding: 1rem 4rem !important;
+    padding: 1rem 4rem;
 }
 
 .nav-logo {
@@ -51,4 +51,10 @@ main {
 
 .main-container {
     padding: 1rem 4rem;
+}
+
+#card-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+    gap: 1.5rem;
 }
