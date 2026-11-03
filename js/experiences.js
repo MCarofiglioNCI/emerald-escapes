@@ -257,5 +257,11 @@ function applyFilters() {
     //    (set .hidden = true or false)
 }
 
+document.getElementById("filter-category").addEventListener("change", applyFilters);
+document.getElementById("filter-location").addEventListener("change", applyFilters);
+document.getElementById("sort-by").addEventListener("change", applyFilters);
+document.getElementById("filter-price").addEventListener("input", applyFilters);
+
 populateFilters(experiences)
 renderCards(experiences)
+applyFilters()
