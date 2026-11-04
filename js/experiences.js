@@ -166,25 +166,31 @@ const experiences = [
   }
 ];
 
+const priceSlider = document.getElementById("filter-price")
+
 function renderCards(experienceList) {
   const cardSection = document.getElementById("card-section")
 
+  cardSection.innerHTML = ""
+
+  // Extra "wow factor": View Transitions API. Relatively new feature and not fully supported in all browsers, but fallback behavior works fine
+  // MDN article: https://developer.mozilla.org/en-US/docs/Web/API/View_Transition_API
   for(const experience of experienceList) {
     const cardContent = `
-        <div class="card experience-card" data-category="${experience.category}" data-price="${experience.price}">
-          <img src="${experience.image}" class="card-img-top" alt="${experience.alt}">
-          <div class="card-body">
-            <h3 class="card-title">${experience.title}</h3>
-            <p class="card-location">${experience.location}</p>
-            <p class="card-text">${experience.description}</p>
-          </div>
-          <div class="card-footer">
-            <span>${experience.duration}</span>
-            <span>€${experience.price}</span>
-          </div>
-        </div>`
-    
-      cardSection.innerHTML += cardContent
+      <div class="card experience-card" style="view-transition-name: card-${experience.id}" data-category="${experience.category}" data-price="${experience.price}">
+        <img src="${experience.image}" class="card-img-top" alt="${experience.alt}">
+        <div class="card-body">
+          <h3 class="card-title">${experience.title}</h3>
+          <p class="card-location">${experience.location}</p>
+          <p class="card-text">${experience.description}</p>
+        </div>
+        <div class="card-footer">
+          <span>${experience.duration}</span>
+          <span>€${experience.price}</span>
+        </div>
+      </div>`
+  
+    cardSection.innerHTML += cardContent
   }
 }
 
@@ -234,34 +240,63 @@ function capitalise(text) {
 }
 
 function applyFilters() {
-  const filteredCategory = document.getElementById("filter-category").value
-  const filteredLocation = document.getElementById("filter-location").value
-  const filteredPrice= parseInt(document.getElementById("filter-price").value)
-  const sorting = document.getElementById("sort-by").value
+  const selectedCategory = document.getElementById("filter-category").value
+  const selectedLocation = document.getElementById("filter-location").value
+  const selectedPrice= parseInt(document.getElementById("filter-price").value)
+  const sortBy = document.getElementById("sort-by").value
+  const filteredExperiences = []
 
-  document.getElementById("price-value").textContent = "€" + filteredPrice
   
-    // 3. Build a filtered list with experiences.filter(...)
-    //    Keep an experience only if ALL of these are true:
-    //    - category is "all" OR matches experience.category
-    //    - location is "all" OR matches experience.county
-    //    - experience.price <= max price
+  for (const experience of experiences) {
+    if (
+      (experience["category"] === selectedCategory || selectedCategory == "all") && 
+      (experience["location"] === selectedLocation || selectedLocation == "all") && 
+      experience["price"] <= selectedPrice
+    ) {
+      filteredExperiences.push(experience)
+    }
+  }
 
-    // 4. Sort the filtered list based on the sort-by value
-    //    e.g. for price low to high: list.sort((a, b) => a.price - b.price)
-    //    "default" means leave the original order
+  // Sorting algorithm from the following stackoverflow thread: https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+  switch (sortBy) {
+    case "price-asc":
+      filteredExperiences.sort((a, b) => a.price - b.price)
+      break
+    case "price-desc":
+      filteredExperiences.sort((a, b) => b.price - a.price)
+      break
+    case "duration-asc":
+      filteredExperiences.sort((a, b) => a.durationDays - b.durationDays)
+      break
+  } 
+  
+  renderCards(filteredExperiences)
 
-    // 5. Call renderCards with the result
+  const noResults = document.getElementById("no-results")
 
-    // 6. Show #no-results if the list is empty, hide it otherwise
-    //    (set .hidden = true or false)
+  if (filteredExperiences.length === 0) {
+    noResults.hidden = false
+  } else {
+    noResults.hidden = true
+  }
 }
 
-document.getElementById("filter-category").addEventListener("change", applyFilters);
-document.getElementById("filter-location").addEventListener("change", applyFilters);
-document.getElementById("sort-by").addEventListener("change", applyFilters);
-document.getElementById("filter-price").addEventListener("input", applyFilters);
+
+// Input event listerner for the price slider to only update the label with the max price, update function only called on change/release of the slider
+document.getElementById("filter-category").addEventListener("change", updateWithTransition);
+document.getElementById("filter-location").addEventListener("change", updateWithTransition);
+document.getElementById("sort-by").addEventListener("change", updateWithTransition);
+priceSlider.addEventListener("input", () => {
+  document.getElementById("price-value").textContent = "€" + parseInt(priceSlider.value)
+});
+priceSlider.addEventListener("change", updateWithTransition);
 
 populateFilters(experiences)
-renderCards(experiences)
 applyFilters()
+function updateWithTransition() {
+  if (document.startViewTransition) {
+      document.startViewTransition(() => applyFilters())
+  } else {
+      applyFilters()
+  }
+}
