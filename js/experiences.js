@@ -291,8 +291,6 @@ priceSlider.addEventListener("input", () => {
 });
 priceSlider.addEventListener("change", updateWithTransition);
 
-populateFilters(experiences)
-applyFilters()
 function updateWithTransition() {
   if (document.startViewTransition) {
       document.startViewTransition(() => applyFilters())
@@ -300,3 +298,21 @@ function updateWithTransition() {
       applyFilters()
   }
 }
+
+function presetFilterFromUrl() {
+  const urlParams = new URLSearchParams(window.location.search)
+  const categoryFromUrl = urlParams.get("category")
+  const categorySelect = document.getElementById("filter-category")
+
+  // Only apply it if it matches one of the dropdown options, so a wrong URL is ignored
+  for (const option of categorySelect.options) {
+    if (option.value === categoryFromUrl) {
+      categorySelect.value = categoryFromUrl
+    }
+  }
+}
+
+
+populateFilters(experiences)
+presetFilterFromUrl()
+applyFilters()
