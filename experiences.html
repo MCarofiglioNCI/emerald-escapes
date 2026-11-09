@@ -1,63 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-	<script src="js/experiences.js" defer></script>
-	<script src="js/bootstrap.min.js" defer></script>
-	<script src="js/main.js" defer></script>
-	<title>Emerald Travels</title>
-</head>
-<body>
-    <header>
-        <nav class="site-nav">
-            <div class="width-container">
-                <div class="nav-logo">
-                    LOGO
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg" href="images/emerald-escapes-icon.svg">
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <script src="js/experiences.js" defer></script>
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="js/main.js" defer></script>
+        <title>Experiences | Emerald Travels</title>
+    </head>
+    <body>
+        <header class="site-header">
+            <nav class="site-nav" aria-label="Main navigation">
+                <div class="width-container nav-inner">
+                    <a href="index.html" class="nav-logo"><img src="images/home/emerald-escapes-logo-white.svg" alt=""></a>
+                    <ul class="nav-main" id="nav-main">
+                        <li><a href="index.html">Home</a></li>
+                        <li>
+                            <a href="experiences.html" aria-current="page"
+                                >Experiences</a
+                            >
+                        </li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                    <div class="nav-extra">
+                        <button
+                            type="button"
+                            class="theme-toggle"
+                            aria-label="Switch to dark mode"
+                        >
+                            🌙
+                        </button>
+                        <button
+                            type="button"
+                            class="nav-toggle"
+                            aria-label="Open menu"
+                            aria-controls="nav-main"
+                            aria-expanded="false"
+                        >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
                 </div>
-                <div class="nav-main">
-                    <div><a href="index.html">Home</a></div>
-                    <div><a href="experiences.html">Experience</a></div>
-                    <div><a href="contact.html">Contact Us</a></div>
-                </div>
-                <div class="nav-extra">
-                    BUTTON
-                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="width-container main-container">
+                <h1>Our Experiences</h1>
+                <p class="page-intro">
+                    Find your next Irish escape, from city breaks to wild
+                    coastal adventures.
+                </p>
+
+                <section
+                    id="filter-section"
+                    class="panel"
+                    aria-label="Filter experiences"
+                >
+                    <div class="filter-controls">
+                        <div class="filter-group">
+                            <label for="filter-category">Category</label>
+                            <select id="filter-category"></select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="filter-location">Location</label>
+                            <select id="filter-location"></select>
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="filter-price"
+                                >Max price: <span id="price-value"></span
+                            ></label>
+                            <input type="range" id="filter-price" step="5" />
+                        </div>
+
+                        <div class="filter-group">
+                            <label for="sort-by">Sort by</label>
+                            <select id="sort-by">
+                                <option value="default">Recommended</option>
+                                <option value="price-asc">
+                                    Price: low to high
+                                </option>
+                                <option value="price-desc">
+                                    Price: high to low
+                                </option>
+                                <option value="duration-asc">
+                                    Duration: shortest first
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="filter-footer">
+                        <p id="result-count" aria-live="polite"></p>
+                        <button
+                            type="button"
+                            id="reset-filters"
+                            class="btn-link"
+                        >
+                            Clear filters
+                        </button>
+                    </div>
+                </section>
+
+                <p id="no-results" hidden>No experiences match your filters.</p>
+
+                <div id="card-section"></div>
+
+                <dialog id="experience-dialog" class="experience-dialog" aria-labelledby="dialog-title">
+                    <button type="button" class="dialog-close" aria-label="Close details">✕</button>
+
+                    <div class="dialog-layout">
+                        <img id="dialog-image" class="dialog-image" src="" alt="">
+
+                        <div class="dialog-content">
+                            <p id="dialog-location" class="card-location"></p>
+                            <h2 id="dialog-title"></h2>
+                            <p id="dialog-description"></p>
+
+                            <div class="dialog-details">
+                                <span id="dialog-duration" class="card-duration"></span>
+                                <span id="dialog-price" class="card-price"></span>
+                            </div>
+
+                            <a id="dialog-book" class="btn-accent" href="contact.html">Book this experience</a>
+                        </div>
+                    </div>
+                </dialog>
             </div>
-        </nav>
-    </header>
+        </main>
 
-    <main>
-        <div class="width-container main-container">
-            <div id="filter-section">
-                <label for="filter-category">Category</label>
-                <select id="filter-category"></select>
-
-                <label for="filter-location">Location</label>
-                <select id="filter-location"></select>
-
-                <label for="filter-price">Max price: <span id="price-value"></span></label>
-                <input type="range" id="filter-price" step="5">
-
-                <label for="sort-by">Sort by</label>
-                <select id="sort-by">
-                    <option value="default">Recommended</option>
-                    <option value="price-asc">Price: low to high</option>
-                    <option value="price-desc">Price: high to low</option>
-                    <option value="duration-asc">Duration: shortest first</option>
-                </select>
+        <footer class="site-footer">
+            <div class="width-container footer-inner">
+                <p>&copy; 2026 Emerald Escapes</p>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="experiences.html">Experiences</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
             </div>
-            <p id="no-results" hidden>No experiences match your filters.</p>
-            <div id="card-section">
-
-            </div>
-        </div>
-    </main>
-
-    <footer>
-
-    </footer>
-</body>
+        </footer>
+    </body>
 </html>

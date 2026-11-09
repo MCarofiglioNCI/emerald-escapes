@@ -1,113 +1,196 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg" href="images/emerald-escapes-icon.svg">
+        <link rel="stylesheet" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <script src="js/bootstrap.min.js" defer></script>
+        <script src="js/main.js" defer></script>
+        <title>Emerald Travels</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="js/bootstrap.min.js" defer></script>
-    <script src="js/main.js" defer></script>
-    <title>Emerald Travels</title>
-</head>
-
-<body>
-    <header>
-        <nav class="site-nav">
-            <div class="width-container">
-                <div class="nav-logo">
-                    LOGO
+    <body>
+        <header class="site-header">
+            <nav class="site-nav" aria-label="Main navigation">
+                <div class="width-container nav-inner">
+                    <a href="index.html" class="nav-logo">
+                        <!-- Full logo on larger screens, icon only on small screens-->
+                        <img src="images/home/emerald-escapes-logo-white.svg" class="logo-full" alt="Emerald Escapes home">
+                        <img src="images/home/emerald-escapes-icon-white.svg" class="logo-icon" alt="Emerald Escapes home">
+                    </a>                    <ul class="nav-main" id="nav-main">
+                        <li>
+                            <a href="index.html" aria-current="page">Home</a>
+                        </li>
+                        <li><a href="experiences.html">Experiences</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                    <div class="nav-extra">
+                        <button
+                            type="button"
+                            class="theme-toggle"
+                            aria-label="Switch to dark mode"
+                        >
+                            🌙
+                        </button>
+                        <button
+                            type="button"
+                            class="nav-toggle"
+                            aria-label="Open menu"
+                            aria-controls="nav-main"
+                            aria-expanded="false"
+                        >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
                 </div>
-                <div class="nav-main">
-                    <div><a href="index.html">Home</a></div>
-                    <div><a href="experiences.html">Experience</a></div>
-                    <div><a href="contact.html">Contact Us</a></div>
-                </div>
-                <div class="nav-extra">
-                    BUTTON
-                </div>
-            </div>
-        </nav>
-    </header>
+            </nav>
+        </header>
 
-    <main>
-        <section class="hero">
-            <img src="images/hero/hero.jpg" class="hero-image"
-                alt="Green hills rolling down to the Atlantic coast on a sunny day in the west of Ireland">
+        <main>
+            <section class="hero">
+                <img
+                    src="images/hero/hero.jpg"
+                    class="hero-image"
+                    alt="Green hills rolling down to the Atlantic coast on a sunny day in the west of Ireland"
+                />
 
-            <div class="hero-content">
-                <h1>Emerald Escapes</h1>
-                <p class="hero-tagline">Explore More. Discover Ireland.</p>
-                <p class="hero-subtitle">
-                    Short breaks, coastal adventures and unforgettable experiences across the island of Ireland.
-                </p>
-                <a href="experiences.html" class="btn-accent">Explore Experiences</a>
-            </div>
-        </section>
-
-        <div class="width-container main-container">
-
-            <section class="about">
-                <div class="about-text">
-                    <h2>Our Story</h2>
-                    <p>
-                        Emerald Escapes was founded in Galway in 2015 by two friends who spent their
-                        weekends exploring the quiet corners of Ireland that most visitors never see.
-                        What started as trips for family and friends grew into a travel company built on
-                        local knowledge, small groups and genuine Irish hospitality.
+                <div class="hero-content">
+                    <h1>Emerald Escapes</h1>
+                    <p class="hero-tagline">Explore More. Discover Ireland.</p>
+                    <p class="hero-subtitle">
+                        Short breaks, coastal adventures and unforgettable
+                        experiences across the island of Ireland.
                     </p>
+                    <a href="experiences.html" class="btn-accent"
+                        >Explore Experiences</a
+                    >
+                </div>
+            </section>
+
+            <div class="width-container main-container">
+                <section class="about">
+                    <div class="about-text">
+                        <h2>Our Story</h2>
+                        <p>
+                            Emerald Escapes was founded in Galway in 2015 by two
+                            friends who spent their weekends exploring the quiet
+                            corners of Ireland that most visitors never see.
+                            What started as trips for family and friends grew
+                            into a travel company built on local knowledge,
+                            small groups and genuine Irish hospitality.
+                        </p>
+                        <p>
+                            We plan holidays for couples looking for a short
+                            break, families wanting adventures everyone can
+                            enjoy, and visitors from abroad hoping to experience
+                            Ireland the way locals do. Whether it's a weekend in
+                            the city or a week on the Wild Atlantic Way, we take
+                            care of the details so you can enjoy the journey.
+                        </p>
+                    </div>
+                    <img
+                        src="images/home/about.jpg"
+                        class="about-image"
+                        alt="A small group of walkers on a guided hike through the Wicklow Mountains"
+                    />
+                </section>
+
+                <section class="offer">
+                    <h2>What We Offer</h2>
+                    <div class="offer-grid">
+                        <a
+                            href="experiences.html?category=city"
+                            class="offer-item"
+                        >
+                            <span class="offer-icon" aria-hidden="true"
+                                >🏙️</span
+                            >
+                            <h3>City Breaks</h3>
+                            <p>
+                                Culture, food and nightlife in Dublin, Galway,
+                                Cork and Belfast.
+                            </p>
+                        </a>
+                        <a
+                            href="experiences.html?category=coastal"
+                            class="offer-item"
+                        >
+                            <span class="offer-icon" aria-hidden="true"
+                                >🌊</span
+                            >
+                            <h3>Coastal Adventures</h3>
+                            <p>
+                                Cliffs, islands and beaches along the Wild
+                                Atlantic Way.
+                            </p>
+                        </a>
+                        <a
+                            href="experiences.html?category=countryside"
+                            class="offer-item"
+                        >
+                            <span class="offer-icon" aria-hidden="true"
+                                >⛰️</span
+                            >
+                            <h3>Countryside Escapes</h3>
+                            <p>
+                                Mountains, lakes and peaceful stays far from the
+                                crowds.
+                            </p>
+                        </a>
+                        <a
+                            href="experiences.html?category=family"
+                            class="offer-item"
+                        >
+                            <span class="offer-icon" aria-hidden="true"
+                                >👨‍👩‍👧</span
+                            >
+                            <h3>Family Trips</h3>
+                            <p>Hands-on adventures designed for all ages.</p>
+                        </a>
+                        <a
+                            href="experiences.html?category=cultural"
+                            class="offer-item"
+                        >
+                            <span class="offer-icon" aria-hidden="true"
+                                >🏰</span
+                            >
+                            <h3>Cultural Experiences</h3>
+                            <p>
+                                Ancient sites, castles and living Irish
+                                traditions.
+                            </p>
+                        </a>
+                    </div>
+                </section>
+
+                <section class="cta">
+                    <h2>Ready to explore?</h2>
                     <p>
-                        We plan holidays for couples looking for a short break, families wanting
-                        adventures everyone can enjoy, and visitors from abroad hoping to experience
-                        Ireland the way locals do. Whether it's a weekend in the city or a week on the
-                        Wild Atlantic Way, we take care of the details so you can enjoy the journey.
+                        Browse our full range of experiences and find your next
+                        Irish escape.
                     </p>
+                    <a href="experiences.html" class="btn-accent"
+                        >View All Experiences</a
+                    >
+                </section>
+            </div>
+        </main>
+        <footer class="site-footer">
+            <div class="width-container footer-inner">
+                <div class="footer-brand">
+                    <img src="images/home/emerald-escapes-icon-white.svg" class="footer-icon" alt="">
+                    <p>&copy; 2026 Emerald Escapes. A fictional company created for a university project.</p>
                 </div>
-                <img src="images/home/about.jpg" class="about-image"
-                    alt="A small group of walkers on a guided hike through the Wicklow Mountains">
-            </section>
-
-            <section class="offer">
-                <h2>What We Offer</h2>
-                <div class="offer-grid">
-                    <a href="experiences.html?category=city" class="offer-item">
-                        <span class="offer-icon" aria-hidden="true">🏙️</span>
-                        <h3>City Breaks</h3>
-                        <p>Culture, food and nightlife in Dublin, Galway, Cork and Belfast.</p>
-                    </a>
-                    <a href="experiences.html?category=coastal" class="offer-item">
-                        <span class="offer-icon" aria-hidden="true">🌊</span>
-                        <h3>Coastal Adventures</h3>
-                        <p>Cliffs, islands and beaches along the Wild Atlantic Way.</p>
-                    </a>
-                    <a href="experiences.html?category=countryside" class="offer-item">
-                        <span class="offer-icon" aria-hidden="true">⛰️</span>
-                        <h3>Countryside Escapes</h3>
-                        <p>Mountains, lakes and peaceful stays far from the crowds.</p>
-                    </a>
-                    <a href="experiences.html?category=family" class="offer-item">
-                        <span class="offer-icon" aria-hidden="true">👨‍👩‍👧</span>
-                        <h3>Family Trips</h3>
-                        <p>Hands-on adventures designed for all ages.</p>
-                    </a>
-                    <a href="experiences.html?category=cultural" class="offer-item">
-                        <span class="offer-icon" aria-hidden="true">🏰</span>
-                        <h3>Cultural Experiences</h3>
-                        <p>Ancient sites, castles and living Irish traditions.</p>
-                    </a>
-                </div>
-            </section>
-
-            <section class="cta">
-                <h2>Ready to explore?</h2>
-                <p>Browse our full range of experiences and find your next Irish escape.</p>
-                <a href="experiences.html" class="btn-accent">View All Experiences</a>
-            </section>
-        </div>
-    </main>
-    <footer>
-
-    </footer>
-</body>
-
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="experiences.html">Experiences</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
 </html>
